@@ -10,7 +10,9 @@
 
 //declare a global variable
 
-int globalInt = 8;
+int multiplier = 8;
+int divisor = 6;
+
 
 
 @interface AppDelegate ()
@@ -27,12 +29,8 @@ int globalInt = 8;
     
 
     [self iterateCount:4];
-   
+    [self multiplied:multiplier];
     
-    
-    
-    
-
     
     
     return YES;
@@ -50,13 +48,22 @@ int globalInt = 8;
         int oneLess = x - 1;
         [self iterateCount:oneLess];
     }
+    int z = multiplier;
+    NSLog(@"Multiplied %d by %d to be %d", x, y, z);
+    NSLog(@"Divided %d by %d to be %d", multiplied, divisor, divided);
+    
 }
 
 -(void)multiplied:(int)y
 {
-    int multiplied = y * globalInt;
+    int multiplied = y * multiplier;
+    [self multiplied:multiplier];
     NSLog(@"%d", multiplied);
+}
 
+-(void)divided:(int)d
+{
+    int divided = d / divisor;
 }
 
 
