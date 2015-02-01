@@ -10,9 +10,8 @@
 
 //declare a global variable
 
-int multiplier = 8;
-int divisor = 6;
-
+static const int kMultiplier = 8;
+static const int kDivisor = 6;
 
 
 @interface AppDelegate ()
@@ -29,7 +28,7 @@ int divisor = 6;
     
 
     [self iterateCount:4];
-    [self multiplied:multiplier];
+    [self multiplied:kMultiplier];
     
     
     
@@ -45,25 +44,34 @@ int divisor = 6;
     else
     {
         NSLog(@"Iterate %d", x);
+        
+        int multipliedNumber;
+        multipliedNumber = [self multiplied:x];
+        NSLog(@"* : %d", multipliedNumber);
+        
+        float dividedNumber;
+        dividedNumber = [self divided:multipliedNumber];
+        NSLog(@"/ : %f", dividedNumber);
+        
         int oneLess = x - 1;
+        NSLog(@"oneLess = %d", oneLess);
         [self iterateCount:oneLess];
     }
-    int z = multiplier;
-    NSLog(@"Multiplied %d by %d to be %d", x, y, z);
-    NSLog(@"Divided %d by %d to be %d", multiplied, divisor, divided);
+
     
 }
 
--(void)multiplied:(int)y
+-(int)multiplied:(int)y
 {
-    int multiplied = y * multiplier;
-    [self multiplied:multiplier];
-    NSLog(@"%d", multiplied);
+    int multiplied = y * kMultiplier;
+    
+    return multiplied;
 }
 
--(void)divided:(int)d
+-(float)divided:(int)d
 {
-    int divided = d / divisor;
+    float divided = (float)d / kDivisor;
+    return divided;
 }
 
 
